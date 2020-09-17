@@ -11,6 +11,9 @@ def euler(y_prime, x_init, y_init, dt, x_final):
       y_init: initial value of y
       dx: change in x for each itearation.
       x_final: last x value to consider.
+
+    Returns:
+      list of (x,y) pairs representing the function y(x).
     """
 
     timesteps =  math.ceil((x_final - x_init) / dt) + 1
