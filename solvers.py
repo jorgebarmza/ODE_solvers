@@ -1,6 +1,7 @@
 import numpy as np
 from tabulate import tabulate
 import math
+import time
 
 
 def euler(y_prime, x_init, y_init, dx, x_final):
@@ -61,28 +62,60 @@ def heun(y_prime, x_init, y_init, dx, x_final):
     return list(zip(range(timesteps), x, y))
 
 
-def pretty_print(f):
-    print(tabulate(f, headers=["i", "x", "y"], floatfmt=".4f"))
+def f_to_str(f, decimals):
+    return tabulate(f,
+                    headers=["i", "x", "y"],
+                    floatfmt=".{}f".format(decimals))
+
+
+def write(filename, f, decimals):
+    fi = open(filename, 'w')
+    fi.write(f_to_str(f, decimals))
+    fi.close()
+
+
+def approximate(filename, decimals, target, method, n_init, y_prime, x_init,
+                y_init, x_final):
+    n = n_init
+    while True:
+        # Get approximation
+        dx = (x_final - x_init) / n
+        f = method(y_prime, x_init, y_init, dx, x_final)
+        approx = f[len(f) - 1][2]
+        if str(round(approx, decimals)) == str(round(target, decimals)):
+            break
+        n *= 2
+    write(filename, f, decimals)
 
 
 if __name__ == "__main__":
 
     # Given derivative expression.
     def y_prime(x, y):
-        return x * math.sqrt(y)
+        return y
 
-    y_prime = y_prime
-    x_init = 1
-    y_init = 4
-    dx = 0.1
-    x_final = 1.5
+    p1_euler_dict = dict(
+        filename='psd1_euler.txt',
+        decimals=3,
+        target=2.71828182846,
+        method=euler,
+        n_init=50,
+        y_prime=y_prime,
+        x_init=0,
+        y_init=1,
+        x_final=1,
+    )
 
-    print("Euler")
-    f1 = euler(y_prime, x_init, y_init, dx, x_final)
-    pretty_print(f1)
-    print()
+    # p1_heun_dict = dict(
+    #     filename='p1_euler.txt',
+    #     decimals=3,
+    #     target=2.71828182846,
+    #     method=euler,
+    #     n_init=50,
+    #     y_prime=y_prime,
+    #     x_init=0,
+    #     y_init=1,
+    #     x_final=1,
+    # )
 
-    print("Heun")
-    f2 = heun(y_prime, x_init, y_init, dx, x_final)
-    pretty_print(f2)
-    print()
+    approximate(**p1_euler_dict)
