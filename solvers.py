@@ -63,8 +63,8 @@ def heun(f, x_init, y_init, h, x_final):
     return list(zip(range(timesteps), x, y))
 
 
-def runge(f, x_init, y_init, h, x_final):
-    """Runge-Kunta's method
+def rk4(f, x_init, y_init, h, x_final):
+    """Standard Runge-Kunta's method
 
     Args:
       f: dy/dx = f(x,y).
@@ -150,13 +150,13 @@ if __name__ == "__main__":
             n_init=10,
         ))
 
-    p1_runge_args = p1_args
-    p1_runge_args.update(
+    p1_rk4_args = p1_args
+    p1_rk4_args.update(
         dict(
-            filename='p1_runge.txt',
-            method=runge,
+            filename='p1_rk4.txt',
+            method=rk4,
             decimals=9,
             n_init=10,
         ))
 
-    approximate(**p1_runge_args)
+    approximate(**p1_rk4_args)
