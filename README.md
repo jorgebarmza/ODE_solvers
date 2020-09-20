@@ -1,7 +1,7 @@
 # ODE solutions
  
 
-ODE solvers based on numerical methods inlcuding Euler's and Heun's method.
+ODE solvers based on numerical methods inlcuding Euler, Heun, and Runge-Kutta methods.
 
 ## Instructions
 
