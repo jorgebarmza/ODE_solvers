@@ -1,13 +1,12 @@
 # ODE solutions
- 
 
 ODE solvers based on numerical methods inlcuding Euler, Heun, and Runge-Kutta methods.
 
 ## Instructions
 
-Update the file `solvers.py` by changing parameters of your solution request in the main method. 
+The `solvers.py` file is a library containing popular ODE approximators. 
 
-Run `python solvers.py`.
+Example usage is shown in `main.py` whose outputs are stored in `/results`.
 
 ## Required software
 
