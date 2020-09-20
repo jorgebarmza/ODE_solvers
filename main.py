@@ -6,7 +6,7 @@ def solve_with_all(p_num, problem_args_dict, method_args_dict):
         full_dict = {}
         full_dict.update(problem_args_dict)
         full_dict.update(method_args_dict[name])
-        full_dict['filename'] = 'p{}_{}.txt'.format(p_num, name)
+        full_dict['filename'] = 'results/p{}_{}.txt'.format(p_num, name)
 
         solvers.approximate(**full_dict)
 
