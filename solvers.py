@@ -2,7 +2,6 @@
 import numpy as np
 from tabulate import tabulate
 import math
-import time
 
 
 def preprocess(x_init, y_init, h, x_final):
@@ -65,7 +64,7 @@ def heun(f, x_init, y_init, h, x_final):
 
 
 def rk4(f, x_init, y_init, h, x_final):
-    """Standard Runge-Kunta's method
+    """Standard Runge-Kutta's method
 
     Args:
       f: dy/dx = f(x,y).
@@ -108,7 +107,7 @@ def write(filename, solution, decimals):
 def approximate(filename, decimals, target, method, n_init, f, x_init, y_init,
                 x_final):
     """Approximates an ODE solution and writes it to a file.
-    
+
     The number of subintervals, n, is duplicated until the desired number of
     decimals precision is obtained.
     """
