@@ -2,6 +2,8 @@
 import numpy as np
 from tabulate import tabulate
 import math
+import time
+
 
 
 def preprocess(x_init, y_init, h, x_final):
@@ -97,10 +99,11 @@ def solution_to_str(solution, decimals):
                     floatfmt=".{}f".format(decimals))
 
 
-def write(filename, solution, decimals):
+def write(filename, solution, decimals, elapsed):
     """Writes ODE solution to a file."""
     fi = open(filename, 'w')
     fi.write(solution_to_str(solution, decimals))
+    fi.write('\n\nTime taken: {} seconds'.format(str(elapsed)))
     fi.close()
 
 
@@ -115,9 +118,11 @@ def approximate(filename, decimals, target, method, n_init, f, x_init, y_init,
     while True:
         # Get approximation
         h = (x_final - x_init) / n
+        start = time.process_time()
         solution = method(f, x_init, y_init, h, x_final)
+        end = time.process_time()
         approx = solution[len(solution) - 1][2]
         if str(round(approx, decimals)) == str(round(target, decimals)):
             break
         n *= 2
-    write(filename, solution, decimals)
+    write(filename, solution, decimals, end - start)
