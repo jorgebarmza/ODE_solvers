@@ -1,6 +1,6 @@
-# ODE solutions
+# ODE solvers
 
-ODE solvers based on numerical methods inlcuding Euler, Heun, and Runge-Kutta methods.
+Ordinary differential equation solvers based on numerical methods inlcuding Euler, Heun, and Runge-Kutta methods.
 
 ## Instructions
 
