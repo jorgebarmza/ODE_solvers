@@ -1,4 +1,4 @@
-# ODE solvers
+# ODE Solvers
 
 Ordinary differential equation solvers based on numerical methods inlcuding Euler, Heun, and Runge-Kutta methods.
 
